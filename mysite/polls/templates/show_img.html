@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    {% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}" />
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p>hello</p>
+{% for obj in imgs %}
+    <a>{{ obj.img_url }}</a>
+    <br>
+    <img src='/media/{{ obj.img_url }}'>
+    <img src="/static/{{ obj.img_url }}">
+{% endfor %}
+</body>
+</html>

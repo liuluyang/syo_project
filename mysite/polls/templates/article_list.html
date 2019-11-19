@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+{% for col,v in data.items %}
+    <ul>
+        <p>父栏目>>{{ col }}</p>
+        {% for child in v.childs %}
+
+            <li>{{ child.id }} {{ child.name }}</li>
+            {% for art in v.articles %}
+                <div style="border-color: aqua;border-style: dashed;border-width: 2px">
+
+                <P>{{ art.title }}</P>
+                    <img src="/static/{{ art.img }}" style="width: 120px;height: 80px">
+                <p>{{ art.content }}</p>
+                <p><span>时间：{{ art.created_at }}</span> <span>作者：{{ art.author }}</span></p>
+                </div>
+                {% endfor %}
+
+            {% endfor %}
+
+
+    </ul>
+    <br>
+
+{% endfor %}
+
+
+</body>
+</html>

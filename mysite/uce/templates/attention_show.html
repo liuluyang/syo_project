@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+{% for obj in obj_new %}
+
+    <ul>
+        <li>
+            <img src="{{ obj.author_avatar }}">
+            {{ obj.author }}  {{ obj.published_at }}
+        </li>
+        <li>{{ obj.content | safe }}</li>
+        {% if obj.media_url %}
+            <li>
+
+                <video width="220" height="240" controls>
+                    <source src="{{ obj.media_url }}" type="video/mp4">
+                    您的浏览器不支持 video 标签。
+                </video>
+
+            </li>
+        {% endif %}
+        <li><a href="{{ obj.from_url }}">详情</a></li>
+
+    </ul>
+{% endfor %}
+
+</body>
+</html>

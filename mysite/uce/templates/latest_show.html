@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+{% for obj in obj_news %}
+<div style="{% if obj.is_red %}{% endif %}">
+    <ul style="{% if obj.is_red %}color: crimson;{% endif %}">
+        <li>{{ obj.created_at | date:'Y-m-d H:i:s'}}</li>
+        <li>
+            <a href="{{ obj.origin_url }}" style="{% if obj.is_red %}color: crimson;{% endif %}">
+                {{ obj.title }}
+            </a>
+        </li>
+        <li>{{ obj.content | safe }}</li>
+    </ul>
+</div>
+{% endfor %}
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body{
+            background-color: #0e1012;color: #ffffff;
+        }
+        *{
+            margin: 0; padding: 0;
+        }
+        #msg{
+            overflow:auto; border:2px solid #303030; color:#ffffff; background-color: #2b2b2b; font-size: 13px; position: absolute; left: 8px; right: 8px; bottom: 8px; top: 40px; word-break:
+break-all;
+        }
+        #log{
+            position: fixed; top: 0; left: 0; width: 100%; height: 40px; text-align: left; margin: 4px 0 0 8px;
+        }
+        #log b{
+            font-size: 26px;
+        }
+        #msgBtn{
+            padding: 5px 10px; border: none; background: #777; float: right; margin: 0 16px 0 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="log"><span><b>实时日志</b></span><button id="msgBtn" type="button">清空</button></div>
+    <div id="msg"><ul class="list"></ul></div>
+    <script src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            if (!window.WebSocket) {
+                if (window.MozWebSocket) {
+                    window.WebSocket = window.MozWebSocket;
+                } else {
+                    $('#msg').append("<p>你的浏览器不支持websocket</p>");
+                }
+            }
+            var ws = new WebSocket('ws://203.195.153.53:9001');
+            ws.onopen = function(evt) {
+                $('.list').append('<li>websocket连接成功</li>');
+            }
+            ws.onmessage = function(evt) {
+                $('.list').append('<li>' + evt.data + '</li>');
+                setTimeout(function(){$('#msg').scrollTop($('.list').height()-$('#msg').height());}, 100)
+            }
+            $("#msgBtn").click(function(){
+                $(".list").html("");
+            })
+        });
+    </script>
+</body>
+</html>

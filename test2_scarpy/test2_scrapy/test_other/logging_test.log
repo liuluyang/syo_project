@@ -1,0 +1,7 @@
+这算是一个警告
+这算是一个警告
+这算是一个警告
+2018-08-04 16:36:57,669 - logging_test.py[line:10] - WARNING: 这算是一个警告
+2018-08-04 16:37:28,988 - logging_test.py[line:10] - WARNING: 这算是一个警告
+2018-08-04 16:37:57,119 - logging_test.py[line:11] - WARNING: 这算是一个警告
+2018-08-04 16:37:57,119 - logging_test.py[line:12] - INFO: 这是信息

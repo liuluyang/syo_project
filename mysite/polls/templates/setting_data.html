@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+        input {width: 300px;height: 20px}
+        span  {display:inline-block;width: 100px}
+    </style>
+</head>
+
+<body>
+
+
+<form action="" method="post">
+        <span>apiKey:</span>
+    <input type="text" name="apiKey" value={{ data.apiKey }}>
+    <p>
+        <span>secretKey:</span>
+    <input type="text" name="secretKey" value={{ data.secretKey }}>
+    <p>
+    <span>Passphrase:</span>
+    <input type="text" name="Passphrase" value={{ data.Passphrase }}>
+    <p>
+    <span>杠杆倍数:</span>
+    <input type="number" name="leverage" value={{ data.leverage }}>
+    <p>
+    <span>开仓张数:</span>
+    <input type="number" name="size" value={{ data.size }}>
+    <p>
+    <span>止损:</span>
+    <input type="number" name="loss" value={{ data.loss }}>
+    <p>
+    <span>固定止盈:</span>
+    <input type="number" name="profit" value={{ data.profit }}>
+    <p>
+    <span>周期:</span>
+    <select name="type">
+        <option value="1min" {% if data.type == '1min' %}selected="selected"{% endif %}>1min</option>
+        <option value="3min" {% if data.type == '3min' %}selected="selected"{% endif %}>3min</option>
+        <option value="5min" {% if data.type == '5min' %}selected="selected"{% endif %}>5min</option>
+        <option value="15min" {% if data.type == '15min' %}selected="selected"{% endif %}>15min</option>
+        <option value="30min" {% if data.type == '30min' %}selected="selected"{% endif %}>30min</option>
+        <option value="1hour" {% if data.type == '1hour' %}selected="selected"{% endif %}>1hour</option>
+    </select>
+    <p>
+        <span>MA1:</span>
+    <input type="number" name="ma1" value={{ data.ma1 }}>
+    <p>
+    <span>MA2:</span>
+    <input type="number" name="ma2" value={{ data.ma2 }}>
+    <p>
+    <hr style="width: auto">
+    <span>是否托管:</span>
+    <select name="is_host">
+        <option value=1 {% if data.is_host == 1 %}selected="selected"{% endif %}>是</option>
+        <option value=0 {% if data.is_host == 0 %}selected="selected"{% endif %}>否</option>
+    </select>
+    <p>
+    <input type="submit" value="提交" style="height: 25px">
+</form>
+
+
+</body>
+</html>
